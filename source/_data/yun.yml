@@ -1,40 +1,23 @@
-mode: auto
+mode: time
 
 avatar:
   url: /images/avatar.jpg
   status:
     enable: true
-    emoji: 😭
-    message: 不想上学
+    emoji: 😊
+    message: 今天又是充满希望的一天～～😏
 
 reward:
   enable: true
   comment: 我很可爱，请给我钱
 
-comment:
-  tips:
-    - 尝试使用 Disqus 评论系统。
-    - 您可以点击下方按钮切换对应评论系统。
-  candidates:
-    - valine
-    - disqusjs
-
-github_issues:
-  enable: true
-
-disqusjs:
-  enable: true
-  shortname: yunyoujun
-  apikey: ouoGQCaamOKdJgyZU5DKcpFnRIg3SNzvk0nwygPtlcTRJuE68c8igvrZGW4wAJoN
-
 valine:
   enable: true
-  appId: 4x0IwQ1sy95mOGQDTO8MYCeA-gzGzoHsz # your leancloud application appid
-  appKey: 9loqwF3UDklPDHaP9IN2uwN8 # your leancloud application appkey
+  appId: 7FmQtbpAi3ice8z5J0NMgQri-gzGzoHsz # your leancloud application appid
+  appKey: L9buOvbvkBj2Td0JsVxUvAKC # your leancloud application appkey
   # https://github.com/DesertsP/Valine-Admin
   # https://valine.yunyoujun.cn
-  placeholder: 大佬求指教&nbsp_(:з」∠)_ （填写邮箱可以收到回复通知～）
-  serverURLs: https://lncld.yunyoujun.cn
+  placeholder: 大佬求指教&nbsp_(:з」∠)_ （填写邮箱可以收到回复通知哦～）
   visitor: true
   recordIP: true
   enableQQ: true
@@ -96,10 +79,10 @@ valine:
     tv_鼓掌: 1d21793f96ef4e6f48b23e53e3b9e42da833a0f6.png
 
 footer:
-  since: 2016
+  since: 2020
   beian:
-    enable: true
-    icp: 苏ICP备17038157号
+    enable: false
+    icp: 沪ICP备17038157号
   custom_text: <a style="display:inline-block" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="blank" title="又拍云"><img height="30" src="https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/logo/upyun-logo.png" alt="upyun"/></a>
   # ...
 
@@ -175,7 +158,9 @@ google_tagmanager:
   id: GTM-M9KWR9L
 
 wordcount:
-  enable: false
+  enable: true
+  count: true
+  time: true
 
 say:
   api: https://el-bot-api.vercel.app/api/words/young

@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 今天又是元气满满的一天
 subtitle: ''
 description: ''
 keywords:
@@ -107,3 +107,29 @@ deploy:
   repo: https://github.com/hy916/hy916.github.io
   branch: master # 默认使用 master 分支
   message: Update Hexo Static Content # 你可以自定义此次部署更新的说明
+
+live2d:
+  enable: true
+  # 推荐使用 jsdelivr 的 CDN 来加载
+  scriptFrom: jsdelivr
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: true
+  debug: true
+  model:
+    # 推荐使用 CDN 来加载模型
+    use: https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json
+  display:
+    position: right
+    width: 150
+    height: 300
+  mobile:
+    show: true
+  react:
+    opacity: 0.7
+  dialog:
+    # 是否开启对话框
+    enable: true
+    # 是否使用一言
+    hitokoto: true
