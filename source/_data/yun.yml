@@ -9,7 +9,7 @@ avatar:
 
 reward:
   enable: true
-  comment: 我很可爱，请给我钱
+  comment: 感jio还阔以，记得打赏哦 😊
 
 valine:
   enable: true
@@ -105,7 +105,7 @@ google_adsense:
 
 post_edit:
   enable: true
-  url: https://github.com/YunYouJun/yunyoujun.github.io/tree/hexo/source/
+  url: https://github.com/hy916/hy916.github.io/
 
 albums:
   enable: true
