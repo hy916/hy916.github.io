@@ -9,9 +9,8 @@ date: 2020-10-21 11:09:05
 password:
 summary: 记录一些js遍历数组及过滤数组的常用方法
 tags:  
-- Es6
-- Array
-- JS
+- ES6
+- JavaScript
 categories: 
 - 前端
 --- 

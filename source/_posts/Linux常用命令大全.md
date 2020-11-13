@@ -6,7 +6,7 @@ toc: true
 mathjax: true
 date: 2020-11-10 13:31:23
 password:
-summary:
+summary: 这里记录了一些Linux常用命令
 tags:
 - Linux
 categories:
