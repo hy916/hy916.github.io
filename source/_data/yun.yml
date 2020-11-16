@@ -105,7 +105,7 @@ google_adsense:
 
 post_edit:
   enable: true
-  url: https://github.com/hy916/hy916.github.io/
+  url: https://github.com/hy916/hy916.github.io/blob/master/source/
 
 albums:
   enable: true
