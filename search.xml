@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Android 打包应用</title>
+      <link href="2021/01/06/Android-%E6%89%93%E5%8C%85%E5%BA%94%E7%94%A8/"/>
+      <url>2021/01/06/Android-%E6%89%93%E5%8C%85%E5%BA%94%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<p>官方教程 <a href="https://reactnative.dev/docs/signed-apk-android/">https://reactnative.dev/docs/signed-apk-android/</a></p><p>Android要求所有应用都必须先使用证书进行数字签名，然后才能安装。 为了通过Google Play商店分发您的Android应用，需要使用发布密钥对其进行签名，然后再将其用于以后的所有更新。 自2017年以来，借助Google Play的应用签名功能，Google Play可以自动管理签名发布。 但是，在将应用程序二进制文件上传到Google Play之前，需要使用上传密钥对其进行签名。 Android Developers文档上的<a href="https://developer.android.com/tools/publishing/app-signing.html">“签署应用程序”</a>页面详细描述了该主题。 本指南简要介绍了该过程，并列出了打包JavaScript捆绑包所需的步骤。</p><h2 id="1-生成上传需要的秘钥"><a href="#1-生成上传需要的秘钥" class="headerlink" title="1. 生成上传需要的秘钥"></a>1. 生成上传需要的秘钥</h2><blockquote><p>Android要求所有应用都有一个数字签名才会被允许安装在用户手机上，Android开发者官网上的如何给你的 <a href="https://developer.android.com/tools/publishing/app-signing.html">应用签名文档</a> 描述了签名的细节  </p></blockquote><p>生成签名有两种方式：</p><ul><li>Keytool命令行</li><li>Android Studio界面生成</li></ul><p>您可以使用keytool生成专用签名密钥。 在Windows上，必须从 <code>C:\Program Files\Java\jdkx.x.x_x\bin</code> 运行keytool。</p><blockquote><p>（一定要记得你在那个路径生成的，后面需要用）</p></blockquote><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">keytool -genkeypair -v -keystore hu-yi-key.keystore -alias huyi-key-alias -keyalg RSA -keysize 2048 -validity 10000<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>⚠️  生成打包用的 key，将 <code>keystore</code> 命名为 <code>hu-yi-key.keystore</code> 别名 <code>-alias</code> 为 <code>huyi-key-alias</code> </p><p>⚠️  记住要输入的 <code>输入密钥库口令:</code></p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 老命令keytool -genkey -v -keystore hu-yi-key.keystore -alias huyi-key-alias -keyalg RSA -keysize 2048 -validity 10000# 官方新命令keytool -genkeypair -v -keystore hu-yi-key.keystore -alias huyi-key-alias -keyalg RSA -keysize 2048 -validity 10000# 输入密钥库口令: huyi2021# 再次输入新口令: huyi2021# 您的名字与姓氏是什么?#   [Unknown]:  huyi# 您的组织单位名称是什么?#   [Unknown]:  huyi# 您的组织名称是什么?#   [Unknown]:  huyi# 您所在的城市或区域名称是什么?#   [Unknown]:  shanghai# 您所在的省&#x2F;市&#x2F;自治区名称是什么?#   [Unknown]:  shanghai# 该单位的双字母国家&#x2F;地区代码是什么?#   [Unknown]:  zh# CN&#x3D;huyi, OU&#x3D;huyi, O&#x3D;huyi, L&#x3D;shanghai, ST&#x3D;shanghai, C&#x3D;zh是否正确?#   [否]:  y## 正在为以下对象生成 2,048 位RSA密钥对和自签名证书 (SHA256withRSA) (有效期为 10,000 天): #    CN&#x3D;huyi, OU&#x3D;huyi, O&#x3D;huyi, L&#x3D;shanghai, ST&#x3D;shanghai, C&#x3D;zh# 输入 &lt;huyi-key-alias&gt; 的密钥口令#   (如果和密钥库口令相同, 按回车):# [正在存储 hu-yi-key.keystore]## 这是一个巨坑 不要迁移标准格式，否则打包错误# Warning:# JKS 密钥库使用专用格式。建议使用 &quot;keytool -importkeystore -srckeystore hu-yi-key.keystore -destkeystore hu-yi-key.keystore -deststoretype pkcs12&quot; 迁移到行业标准格式 PKCS12。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>⚠️⚠️⚠️ 下面这是一个巨坑 不要迁移标准格式，否则打包错误，上面生成命令会提示下面命令，如果你照做了，坑可能爬不出来</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># Warning:# JKS 密钥库使用专用格式。建议使用 &quot;keytool -importkeystore -srckeystore hu-yi-key.keystore -destkeystore hu-yi-key.keystore -deststoretype pkcs12# &quot; 迁移到行业标准格式 PKCS12。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p><img src="https://gitee.com/hy0916/PictureBed/raw/master/20210106164646.png" alt="Android打包" loading="lazy"></p><h2 id="2-设置Gradle变量"><a href="#2-设置Gradle变量" class="headerlink" title="2. 设置Gradle变量"></a>2. 设置Gradle变量</h2><p><img src="https://gitee.com/hy0916/PictureBed/raw/master/20210106165559.png" alt="Android打包" loading="lazy"></p><p>如果 Gradle 加载失败，<a href="https://gradle.org/">https://gradle.org/</a> 点击下面按钮重新同步</p><p><img src="https://gitee.com/hy0916/PictureBed/raw/master/20210106165742.png" alt="Android打包" loading="lazy"></p><p>Android Studio 打包</p><p><img src="https://gitee.com/hy0916/PictureBed/raw/master/20210106170348.png" alt="Android打包" loading="lazy"></p><p><img src="https://gitee.com/hy0916/PictureBed/raw/master/20210106170456.png" alt="Android打包" loading="lazy"></p><p><code>Key store path</code> 是选择你刚才命令行生成的key,根据你存放的路径选择key就行<br><code>Key store password</code> 是你设置的 密钥库口令: huyi2021<br><code>Key alias</code> 别名是直接刚才生成的，点击那个小图标直接选择就行<br><img src="https://gitee.com/hy0916/PictureBed/raw/master/20210106170653.png" alt="Android打包" loading="lazy"></p><p><img src="https://gitee.com/hy0916/PictureBed/raw/master/20210106171623.png" alt="Android打包" loading="lazy"></p><p>安静的等待中。。。<br>不妨再出一个ios打包？？<br><img src="https://gitee.com/hy0916/PictureBed/raw/master/20210106171942.png" alt="Android打包" loading="lazy"></p><p>ok 顺利完成，我们去找到这个<code>.apk</code>的安装包<br><img src="https://gitee.com/hy0916/PictureBed/raw/master/20210106172307.png" alt="Android打包" loading="lazy"></p><p>根据图片的路径来找，然后直接发送到手机上就可以在手机上安装啦<br><img src="https://gitee.com/hy0916/PictureBed/raw/master/20210106172535.png" alt="Android打包" loading="lazy"></p><p>Android 打包应用到此结束，不妨点下文章下面的小手手吧！！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 打包 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Android </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>mac解决github图片开裂的问题</title>
       <link href="2021/01/05/mac%E8%A7%A3%E5%86%B3github%E5%9B%BE%E7%89%87%E5%BC%80%E8%A3%82%E7%9A%84%E9%97%AE%E9%A2%98/"/>
       <url>2021/01/05/mac%E8%A7%A3%E5%86%B3github%E5%9B%BE%E7%89%87%E5%BC%80%E8%A3%82%E7%9A%84%E9%97%AE%E9%A2%98/</url>
