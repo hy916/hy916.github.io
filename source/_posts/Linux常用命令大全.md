@@ -4,13 +4,14 @@ top: false
 cover: false
 toc: true
 mathjax: true
-date: 2020-11-10 13:31:23
-password:
 summary: 这里记录了一些Linux常用命令
 tags:
-- Linux
+  - Linux
 categories:
-- 命令
+  - 命令
+abbrlink: 44b30305
+date: 2020-11-10 13:31:23
+password:
 ---
 
 ### 文件和目录

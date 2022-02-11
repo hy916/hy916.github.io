@@ -4,13 +4,14 @@ top: false
 cover: false
 toc: true
 mathjax: true
+tags:
+  - ES6
+categories:
+  - 前端
+abbrlink: 2829133d
 date: 2020-11-16 11:29:52
 password:
 summary:
-tags:
-- ES6
-categories:
-- 前端
 ---
 
 ## 1.字符串反转

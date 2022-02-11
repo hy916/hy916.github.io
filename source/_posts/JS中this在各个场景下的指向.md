@@ -4,13 +4,14 @@ top: false
 cover: false
 toc: true
 mathjax: true
+tags:
+  - JavaScript
+categories:
+  - 前端
+abbrlink: 4787d187
 date: 2020-11-17 14:27:00
 password:
 summary:
-tags:
-- JavaScript
-categories:
-- 前端
 ---
 
 ## 1. this 的奥秘

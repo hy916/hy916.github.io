@@ -4,13 +4,14 @@ top: true
 cover: false
 toc: true
 mathjax: true
-date: 2020-11-11 11:02:12
-password:
 summary: 这里记录我最近接触TypeScript的一些学习笔记和知识点。
 tags:
-- TypeScript
+  - TypeScript
 categories:
-- 前端
+  - 前端
+abbrlink: '4836e520'
+date: 2020-11-11 11:02:12
+password:
 ---
 
 ## 一、变量类型

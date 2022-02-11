@@ -4,13 +4,14 @@ top: false
 cover: false
 toc: true
 mathjax: true
-date: 2020-11-11 11:18:10
-password:
 summary: 学习Markdown语法记录的一些笔记
 tags:
-- Markdown
+  - Markdown
 categories:
-- 轻量标记语言
+  - 轻量标记语言
+abbrlink: 78e09c9c
+date: 2020-11-11 11:18:10
+password:
 ---
 
 ## 一、学习了markdown语法

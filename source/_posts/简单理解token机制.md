@@ -4,13 +4,14 @@ top: false
 cover: false
 toc: true
 mathjax: true
+tags:
+  - token
+categories:
+  - 前端
+abbrlink: d9f44f40
 date: 2020-11-17 14:20:21
 password:
 summary:
-tags:
-- token
-categories:
-- 前端
 ---
 
 ## 什么是token

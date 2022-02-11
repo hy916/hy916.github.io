@@ -4,13 +4,14 @@ top: false
 cover: false
 toc: true
 mathjax: true
+tags:
+  - JavaScript
+categories:
+  - 前端
+abbrlink: 51fa142e
 date: 2020-11-17 14:35:51
 password:
 summary:
-tags:
-- JavaScript
-categories:
-- 前端
 ---
 
 在前端开发的过程中，我们经常会需要绑定一些持续触发的事件，如 resize、scroll、mousemove 等等，但有些时候我们并不希望在事件持续触发的过程中那么频繁地去执行函数。
